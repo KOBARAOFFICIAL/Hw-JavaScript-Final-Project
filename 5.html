@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript">
+
+    // 5. Добавить объекту team метод showTeam(), который будет выводить информацию о всех сотрудниках в консоль в формате: "John - Project manager. Зарплата - 4863$."* Для удобства создайте по порядку все необходимые функции и в конце сделать вызов этих функций в логическом порядке. Например: getNames(); createTeam(); setSalary(); создание цикла для установки метода tellAboutYourSelf(); создание team.showTeam = function() {...}; вызов метода showTeam();
+
+//1. Принимаем от пользователя имена
+function getNames() {
+  const positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+  const names = [];
+
+  positions.forEach((position) => {
+    const name = prompt(`Введите имя для должности ${position}`);
+    names.push(name);
+  });
+
+  return { positions, names };
+}
+
+//2. Создаем объект команды и заполняем его данными
+function createTeam() {
+  const team = {};
+
+  const { positions, names } = getNames();
+
+  positions.forEach((position, index) => {
+    const name = names[index];
+    team[position] = { name, position };
+  });
+
+  return team;
+}
+
+//3. Устанавливаем зарплаты для сотрудников
+function setSalary(team) {
+  for (const position in team) {
+    const { position: pos, name } = team[position];
+    let salary = 0;
+
+    if (pos.indexOf('Junior') !== -1) {
+      salary = Math.floor(Math.random() * (1000 - 500 + 1) + 500);
+    } else if (pos.indexOf('Middle') !== -1) {
+      salary = Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
+    } else if (pos.indexOf('Senior') !== -1) {
+      salary = Math.floor(Math.random() * (3000 - 2500 + 1) + 2500);
+    } else {
+      salary = Math.floor(Math.random() * (4500 - 4000 + 1) + 4000);
+    }
+
+    team[position].salary = salary;
+  }
+
+  return team;
+}
+
+//4. Добавляем метод tellAboutYourSelf для каждого сотрудника
+function addTellAboutYourSelf(team) {
+  for (const position in team) {
+    const { name, position: pos, salary } = team[position];
+
+    team[position].tellAboutYourSelf = function() {
+      console.log(`Меня зовут ${name} и я - ${pos}. Я зарабатываю ${salary}$.`);
+    }
+  }
+
+  return team;
+}
+
+//5. Создаем метод showTeam для объекта команды
+function addShowTeam(team) {
+  team.showTeam = function() {
+    for (const position in team) {
+      const { name, position: pos, salary } = team[position];
+
+      console.log(`${name} - ${pos}. Зарплата - ${salary}$.`);
+    }
+  }
+
+  return team;
+}
+
+//Вызываем все функции в логическом порядке
+const team = createTeam();
+setSalary(team);
+addTellAboutYourSelf(team);
+addShowTeam(team);
+
+team.showTeam();
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

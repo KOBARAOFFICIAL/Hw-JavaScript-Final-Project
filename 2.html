@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript">
+
+        // 2. Создать объект team в котором будут храниться новые объекты-сотрудники с параметрами name и position, данные для этих свойств добавляем из массивов.
+
+        // Запросить у пользователя имена участников команды
+const names = [];
+const positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+
+for (let i = 0; i < positions.length; i++) {
+  const name = prompt(`Введите имя участника для должности ${positions[i]}:`);
+  names.push(name);
+}
+
+// Создать объект команды и заполнить его объектами-сотрудниками
+const team = {};
+
+for (let i = 0; i < positions.length; i++) {
+  const name = names[i];
+  const position = positions[i];
+  const employee = { name, position };
+  team[name] = employee;
+}
+
+// Вывести полученный объект команды в консоль
+console.log(team);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

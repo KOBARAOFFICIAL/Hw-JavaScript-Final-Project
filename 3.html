@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript">
+
+        // 3. Добавить сотрудникам зарплаты (свойство salary) при помощи метода Math.random(), который будет выдавать произвольное число в промежутке между N1 и N2 исходя из принципа: если в должности есть слово "junior" сумма будет от 500 до 1000; если в должности есть слово "middle" сумма будет от 1500 до 2000; если в должности есть слово "senior" сумма будет от 2500 до 3000; для всех остальных - от 4000 до 4500; Для определения того есть ли слово в имени должности используйте метод str.indexOf('часть строки для поиска'). Например: var name = 'Junior developer'; name.indexOf('Junior'); 
+   //в данном случае вернет 0, если такая строка отсутсвует вернет -1. 
+   //Регистр имеет значение, по этому строка "junior" вернет -1
+
+// Шаг 1. Запросить у пользователя имена для команды
+const positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+const teamNames = [];
+
+for (let i = 0; i < positions.length; i++) {
+  let name = prompt(`Введите имя для позиции "${positions[i]}":`);
+  while (!name) {
+    name = prompt(`Введите имя для позиции "${positions[i]}" (это поле обязательно):`);
+  }
+  teamNames.push(name);
+}
+
+// Шаг 2. Создать объект team
+const team = [];
+
+for (let i = 0; i < positions.length; i++) {
+  team.push({
+    name: teamNames[i],
+    position: positions[i]
+  });
+}
+
+// Шаг 3. Добавить свойство salary каждому сотруднику в объекте team
+for (let i = 0; i < team.length; i++) {
+  const position = team[i].position.toLowerCase();
+  let salary;
+  if (position.indexOf('junior') !== -1) {
+    salary = Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
+  } else if (position.indexOf('middle') !== -1) {
+    salary = Math.floor(Math.random() * (2000 - 1500 + 1)) + 1500;
+  } else if (position.indexOf('senior') !== -1) {
+    salary = Math.floor(Math.random() * (3000 - 2500 + 1)) + 2500;
+  } else {
+    salary = Math.floor(Math.random() * (4500 - 4000 + 1)) + 4000;
+  }
+  team[i].salary = salary;
+}
+
+// Вывести объект team в консоль
+console.log(team);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

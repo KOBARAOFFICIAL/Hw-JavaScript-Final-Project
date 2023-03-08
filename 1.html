@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript">
+
+    // 1. Принять от пользователя имена людей для набора в команду. Имена принять и сохранить в новом массиве. Количество имён должно соответсвовать количеству должностей. Массив с должностями - ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'].
+
+    // Создаем массив должностей
+    const positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+
+    // Создаем пустой массив для хранения имен
+    const names = [];
+
+    // Получаем от пользователя имена и добавляем их в массив names
+    for (let i = 0; i < positions.length; i++) {
+      const name = prompt(`Введите имя для должности "${positions[i]}":`);
+      names.push(name);
+    }
+
+    // Получаем нужное количество имен с помощью метода slice()
+    const requiredNames = names.slice(0, positions.length);
+
+    // Выводим полученные имена в консоль
+    console.log(requiredNames);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
